@@ -1,0 +1,160 @@
+<div class="">
+    <div class="breadcrumb">
+        <ul>
+            <li><a routerLink="/admin/dashboard"> {{ 'common.dashboard' | translate }} </a></li>
+            <li>{{ 'common.monitor' | translate }}</li>
+            <li>{{ 'common.vehicle' | translate }}</li>
+            <li>{{ 'common.view' | translate }}</li>
+        </ul>
+    </div>
+    <div class="separator-breadcrumb border-top"></div>
+</div>
+
+
+<div class="row">
+    <div class="col-md-12">
+        <div class="card mb-4">
+            <div class="card-header">
+                {{ 'vehicle.vehicle_information' | translate | titlecase }}
+            </div>
+
+            <div class="card-body ss-card-monitor-profile"
+                style="background-image: url('../../assets/images/ss-dash-shape_new.png');">
+                <div class="row ss-disp-flex-just-center">
+                    <div class="col-md-6 text-center ss-mon-img-sec">
+
+                        <!-- <div *ngIf="viewSubscriber.value.profile_image_source">
+                            <img src="{{viewSubscriber.value.profile_image_source}}"
+                                style="width: 120px; border-radius: 50%;">
+                        </div> -->
+
+                        <div>
+                            <img src="../../../../assets/images/placeholder.png" style="width: 120px;">
+                        </div>
+
+                        <h2>Audi </h2>
+
+                        <span class="badge badge-pill badge-info p-2 mr-1">A50</span>
+
+                    </div>
+                    <div class="col-md-6">
+                        <table>
+                            <tr>
+                                <td class="ss-tbl-monit-w"> {{ 'vehicle.model_name' | translate | titlecase }}</td>
+                                <td class="ss-tbl-td-monit-w">Audi</td>
+                            </tr>
+
+                            <tr>
+                                <td class="ss-tbl-monit-w">{{ 'vehicle.model' | translate | titlecase }}</td>
+                                <td class="ss-tbl-td-monit-w">A50</td>
+                            </tr>
+
+                            <tr>
+                                <td class="ss-tbl-monit-w">{{ 'vehicle.fuel' | translate | titlecase }}</td>
+                                <td class="ss-tbl-td-monit-w">Petrol</td>
+                            </tr>
+
+                            <tr>
+                                <td class="ss-tbl-monit-w">{{ 'vehicle.gear_system' | translate | titlecase }}</td>
+                                <td class="ss-tbl-td-monit-w">Auto</td>
+                            </tr>
+
+
+                            <tr>
+                                <td class="ss-tbl-monit-w">{{ 'vehicle.seats' | translate | titlecase }}</td>
+                                <td class="ss-tbl-td-monit-w">05</td>
+                            </tr>
+
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+<div class="row">
+    <div class="col-md-12">
+        <div class="card mb-4">
+            <div class="card-header">
+                <div class="row">
+
+                    <div class="col-md-4 ss-aligned-center ss-mob-aligned">
+                        {{ 'vehicle.service_list' | translate | titlecase }}
+                    </div>
+
+                    <div class="col-md-8 ss-search-def">
+                        <div class="form-group">
+                            <input  placeholder=" {{ 'vehicle.search_service' | translate | titlecase }}"
+                                class="form-control form-control-rounded ">
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+
+            <div class="card-body ss-overf-scroll">
+                <div class="col-md-12">
+                    <div class="form-group ss-src-vehic">
+                    </div>
+                </div>
+
+                <table class="ss-com-table">
+                    <thead>
+                        <tr>
+                            <th (click)="sort('service_id')">
+                                {{ 'vehicle.service_id' | translate | titlecase }}
+                                <div class="ss-sort-icon">
+                                    <span [class.active]=" (col_name == 'service_id') && (sort_order == 'asc')">
+                                        <div class="ss-up "></div>
+                                    </span>
+                                    <span [class.active]=" (col_name == 'service_id') && (sort_order == 'desc')">
+                                        <div class="ss-down "></div>
+                                    </span>
+                                </div>
+                            </th>
+
+                            <th (click)="sort('service_name')">
+                                {{ 'vehicle.service_name' | translate | titlecase }}
+                                <div class="ss-sort-icon">
+                                    <span [class.active]=" (col_name == 'service_name') && (sort_order == 'asc')">
+                                        <div class="ss-up "></div>
+                                    </span>
+                                    <span [class.active]=" (col_name == 'service_name') && (sort_order == 'desc')">
+                                        <div class="ss-down "></div>
+                                    </span>
+                                </div>
+                            </th>
+
+
+                            <th class="text-center">
+                                {{ 'request.table.action' | translate | titlecase }}
+                            </th>
+                        </tr>
+                    </thead>
+
+                    <tbody>
+                        <tr *ngFor="let services_list of services_list_vehicle">
+                            <td>{{services_list.service_id}}</td>
+                            <td>{{services_list.service_name}}</td>
+
+                            <td class="text-center">
+                                <button type="button" class="btn btn-outline-danger btn-rounded m-1 toolt"><i
+                                        class="i-Close"></i>
+                                    <span class="tooltiptext">
+                                        {{ 'common.delete' | translate }}</span>
+                                </button>
+                            </td>
+                        </tr>
+                    </tbody>
+
+                </table>
+
+
+
+
+            </div>
+        </div>
+    </div>
+</div>

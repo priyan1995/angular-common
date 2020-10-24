@@ -1,0 +1,148 @@
+<div class="">
+    <div class="breadcrumb">
+      <ul>
+        <li><a routerLink="/admin/dashboard"> {{ 'common.dashboard' | translate }} </a></li>
+        <li>{{ 'common.monitor' | translate }}</li>
+        <li>{{ 'common.vehicle' | translate }}</li>
+        <li> {{ 'common.edit' | translate | titlecase }} </li>
+      </ul>
+    </div>
+    <div class="separator-breadcrumb border-top"></div>
+  </div>
+  
+  <div class="row">
+    <div class="col-md-12">
+      <div class="card mb-4">
+        <div class="card-header">
+          {{ 'vehicle.vehicle_edit' | translate | titlecase }}
+        </div>
+        <div class="card-body">
+  
+          <form [formGroup]="editVehicle" (ngSubmit)="editvehicle()">
+            <div class="row">
+              <div class="col-lg-6">
+  
+                <div class="form-group mb-3">
+                  <label for=""> {{ 'vehicle.vehicle_brand' | translate | titlecase }} <span class="text-danger">*</span></label>
+                  <select type="text" class="form-control" formControlName="vehicle_brand">
+                    <option value="">{{ 'vehicle.vehicle_brand' | translate | titlecase }}</option>
+                    <option>option 1</option>
+                  </select>
+                  <div class="text-danger">
+                    <div
+                      *ngIf="editVehicle.controls['vehicle_brand'].invalid && ( editVehicle.controls['vehicle_brand'].dirty || editVehicle.controls['vehicle_brand'] )">
+                      {{ 'errors.required' | translate:{ value: 'vehicle.vehicle_brand' | translate  } }}
+                    </div>
+                  </div>
+                </div>
+  
+  
+                <div class="form-group mb-3">
+                  <label for="">{{ 'vehicle.vehicle_model' | translate | titlecase }} <span class="text-danger">*</span></label>
+                  <select class="form-control" formControlName="vehicle_model">
+                    <option value="">{{ 'vehicle.select_model' | translate | titlecase }}</option>
+                    <option>option 1</option>
+                    <option>option 1</option>
+                    <option>option 1</option>
+                  </select>
+  
+                  <div class="text-danger">
+                    <div
+                      *ngIf="editVehicle.controls['vehicle_model'].invalid && ( editVehicle.controls['vehicle_model'].dirty || editVehicle.controls['vehicle_model'].touched )">
+                      {{ 'errors.required' | translate:{ value: 'vehicle.vehicle_model' | translate  } }}
+                    </div>
+                  </div>
+                </div>
+  
+                <div class="form-group mb-3">
+                  <label for="">{{ 'vehicle.fuel_type' | translate | titlecase }} <span class="text-danger">*</span></label>
+                  <select class="form-control" formControlName="vehicle_fuel_type">
+                    <option value="">{{ 'vehicle.select_fuel_type' | translate | titlecase }}</option>
+                    <option>Gasoline</option>
+                    <option>Diesel</option>
+                    <option>Petrol </option>
+                    <option>Compressed Natural Gas</option>
+                    <option>Ethanol</option>
+                    <option>Bio-Diesel</option>
+                    <option>Electic</option>
+                    <option>Hybrid </option>
+                  </select>
+  
+                  <div class="text-danger">
+                    <div
+                      *ngIf="editVehicle.controls['vehicle_fuel_type'].invalid && ( editVehicle.controls['vehicle_fuel_type'].dirty || editVehicle.controls['vehicle_fuel_type'].touched )">
+                      {{ 'errors.required' | translate:{ value: 'vehicle.fuel_type' | translate  } }}
+                    </div>
+                  </div>
+                </div>
+  
+                <div class="form-group mb-3">
+                  <label for="">{{ 'vehicle.gear_system' | translate | titlecase }} <span class="text-danger">*</span></label>
+                  <select type="text" class="form-control" formControlName="vehicle_gear_system">
+                    <option value="">{{ 'vehicle.select_gear_system' | translate | titlecase }}</option>
+                    <option>Automatic Transmission</option>
+                    <option>Manual Transmission</option>
+                    <option>Continuously Variable Transmission (CVT)</option>
+                    <option>Semi-automatic and Dual-clutch transmissions</option>
+                  </select>
+  
+                  <div class="text-danger">
+                    <div
+                      *ngIf="editVehicle.controls['vehicle_gear_system'].invalid && ( editVehicle.controls['vehicle_gear_system'].dirty || editVehicle.controls['vehicle_gear_system'].touched )">
+                      {{ 'errors.required' | translate:{ value: 'vehicle.gear_system' | translate  } }}
+                    </div>
+                  </div>
+                </div>
+  
+              </div>
+  
+              <div class="col-lg-6 ">
+  
+                <div class="form-group mb-3">
+                  <label for="">{{ 'vehicle.seats' | translate | titlecase }} <span class="text-danger">*</span></label>
+                  <input type="text" class="form-control" placeholder="{{ 'vehicle.seats' | translate | titlecase }}" formControlName="vehicle_seats">
+                  <div class="text-danger">
+                    <div
+                      *ngIf="editVehicle.controls['vehicle_seats'].invalid && ( editVehicle.controls['vehicle_seats'].dirty || editVehicle.controls['vehicle_seats'].touched )">
+                      {{ 'errors.required' | translate:{ value: 'vehicle.seats' | translate  } }}
+                    </div>
+                  </div>
+                </div>
+  
+                <div class="form-group mb-3">
+                  <label for="category_image">{{ 'vehicle.vehicle_image' | translate | titlecase }}</label>
+                  <div class="input-group">
+  
+                    <div class="input-group-prepend">
+                      <span class="input-group-text" id="inputGroupFileAddon01">{{ 'common.image' | translate | titlecase }}</span>
+                    </div>
+                    <div class="custom-file">
+                      <input type="file" class="custom-file-input" id="inputGroupFile01"
+                        aria-describedby="inputGroupFileAddon01">
+                      <label class="custom-file-label" for="inputGroupFile01">{{ 'vehicle.vehicle_image' | translate | titlecase }}</label>
+                    </div>
+                  </div>
+  
+                  <div class="ss-img-div-dash-l-c">
+                    <!-- <img class=""  />
+                          <div class="ss-remove-btn-dash" >X
+                          </div> -->
+                    <img src="../../../../assets/images/placeholder.png">
+                  </div>
+                </div>
+  
+              </div>
+  
+              <div class="col-md-12 form-group ss-subm-vehic mb-3">
+                <button type="submit" class="btn btn-outline-primary"
+                  [disabled]="!editVehicle.valid">{{ 'common.submit' | translate }}</button>
+                <button routerLink="/admin/monitor/vehicle"
+                  class="btn btn-outline-danger m-1">{{ 'common.cancel' | translate }}</button>
+              </div>
+  
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>

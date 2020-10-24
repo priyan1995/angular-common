@@ -1,0 +1,341 @@
+<div class="">
+  <div class="breadcrumb">
+    <ul>
+      <li><a routerLink="/admin/dashboard"> {{ 'common.dashboard' | translate }} </a></li>
+      <li>{{ 'common.monitor' | translate }}</li>
+      <li>{{ 'common.vehicle' | translate }}</li>
+    </ul>
+  </div>
+  <div class="separator-breadcrumb border-top"></div>
+</div>
+
+<div class="row">
+  <div class="col-md-12">
+    <div class="card mb-4">
+      <div class="card-header">
+        {{ 'vehicle.add_vehicle' | translate | titlecase }}
+      </div>
+      <div class="card-body">
+
+        <form [formGroup]="createVehicle" (ngSubmit)="createvehicle()">
+          <div class="row">
+            <div class="col-lg-6">
+
+              <div class="form-group mb-3">
+                <label for="">{{ 'vehicle.vehicle_brand' | translate | titlecase }} <span
+                    class="text-danger">*</span></label>
+                <select type="text" class="form-control" formControlName="vehicle_brand">
+                  <option value="">{{ 'vehicle.select_brand' | translate | titlecase }}</option>
+                  <option>option 1</option>
+                </select>
+                <div class="text-danger">
+                  <div
+                    *ngIf="createVehicle.controls['vehicle_brand'].invalid && ( createVehicle.controls['vehicle_brand'].dirty || createVehicle.controls['vehicle_brand'].touched )">
+                    {{ 'errors.required' | translate:{ value: 'vehicle.vehicle_brand' | translate  } }}
+                  </div>
+                </div>
+              </div>
+
+
+              <div class="form-group mb-3">
+                <label for="">{{ 'vehicle.vehicle_model' | translate | titlecase }} <span
+                    class="text-danger">*</span></label>
+                <select type="text" class="form-control" formControlName="vehicle_model">
+                  <option value="">{{ 'vehicle.select_model' | translate | titlecase }}</option>
+                  <option>option 1</option>
+                </select>
+
+                <div class="text-danger">
+                  <div
+                    *ngIf="createVehicle.controls['vehicle_model'].invalid && ( createVehicle.controls['vehicle_model'].dirty || createVehicle.controls['vehicle_model'].touched )">
+                    {{ 'errors.required' | translate:{ value: 'vehicle.vehicle_model' | translate  } }}
+                  </div>
+                </div>
+              </div>
+
+              <div class="form-group mb-3">
+                <label for="">{{ 'vehicle.fuel_type' | translate | titlecase }} <span
+                    class="text-danger">*</span></label>
+                <select type="text" class="form-control" formControlName="vehicle_fuel">
+                  <option value="">{{ 'vehicle.select_fuel_type' | translate | titlecase }}</option>
+                  <option>Gasoline</option>
+                  <option>Diesel</option>
+                  <option>Petrol </option>
+                  <option>Compressed Natural Gas</option>
+                  <option>Ethanol</option>
+                  <option>Bio-Diesel</option>
+                  <option>Electic</option>
+                  <option>Hybrid </option>
+                </select>
+
+                <div class="text-danger">
+                  <div
+                    *ngIf="createVehicle.controls['vehicle_fuel'].invalid &&  ( createVehicle.controls['vehicle_fuel'].dirty || createVehicle.controls['vehicle_fuel'].touched )">
+                    {{ 'errors.required' | translate:{ value: 'vehicle.fuel_type' | translate  } }}
+                  </div>
+                </div>
+              </div>
+
+              <div class="form-group mb-3">
+                <label for="">{{ 'vehicle.gear_system' | translate | titlecase }} <span
+                    class="text-danger">*</span></label>
+                <select type="text" class="form-control" formControlName="vehicle_gear">
+                  <option value="">{{ 'vehicle.select_gear_system' | translate | titlecase }} </option>
+                  <option>Automatic Transmission</option>
+                  <option>Manual Transmission</option>
+                  <option>Continuously Variable Transmission (CVT)</option>
+                  <option>Semi-automatic and Dual-clutch transmissions</option>
+                </select>
+
+                <div class="text-danger">
+                  <div
+                    *ngIf="createVehicle.controls['vehicle_gear'].invalid && ( createVehicle.controls['vehicle_gear'].dirty || createVehicle.controls['vehicle_gear'].touched )">
+                    {{ 'errors.required' | translate:{ value: 'vehicle.gear_system' | translate  } }}
+                  </div>
+                </div>
+              </div>
+
+            </div>
+
+            <div class="col-lg-6 ">
+
+              <div class="form-group mb-3">
+                <label for="">{{ 'vehicle.seats' | translate | titlecase }} <span class="text-danger">*</span></label>
+                <input type="text" class="form-control" placeholder="{{ 'vehicle.seats' | translate | titlecase }}"
+                  formControlName="vehicle_seats">
+                <div class="text-danger">
+                  <div
+                    *ngIf="createVehicle.controls['vehicle_seats'].invalid && ( createVehicle.controls['vehicle_seats'].dirty || createVehicle.controls['vehicle_seats'].touched )">
+                    {{ 'errors.required' | translate:{ value: 'vehicle.seats' | translate  } }}
+                  </div>
+                </div>
+              </div>
+
+              <div class="form-group mb-3">
+                <label for="category_image">{{ 'vehicle.vehicle_image' | translate | titlecase }}</label>
+                <div class="input-group">
+
+                  <div class="input-group-prepend">
+                    <span class="input-group-text"
+                      id="inputGroupFileAddon01">{{ 'common.image' | translate | titlecase }}</span>
+                  </div>
+                  <div class="custom-file">
+                    <input type="file" class="custom-file-input" id="inputGroupFile01"
+                      aria-describedby="inputGroupFileAddon01">
+                    <label class="custom-file-label"
+                      for="inputGroupFile01">{{ 'vehicle.vehicle_image' | translate | titlecase }}</label>
+                  </div>
+                </div>
+
+                <div class="ss-img-div-dash-l-c">
+                  <!-- <img class=""  />
+                      <div class="ss-remove-btn-dash" >X
+                      </div> -->
+                  <img src="../../../../assets/images/placeholder.png">
+                </div>
+              </div>
+
+            </div>
+
+            <div class="col-md-12 form-group ss-subm-vehic mb-3">
+              <button type="submit" class="btn btn-outline-primary mb-3"
+                [disabled]="!createVehicle.valid">{{ 'common.submit' | translate }}</button>
+            </div>
+
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="row">
+  <div class="col-md-12">
+    <div class="card mb-4">
+
+      <div class="card-header">
+        <div class="row">
+          <div class="col-md-4 ss-aligned-center ss-mob-aligned">
+            {{ 'vehicle.vehicle_list' | translate | titlecase }}
+          </div>
+
+          <div class="col-md-8 ss-search-def">
+            <div class="form-group">
+              <input placeholder="{{ 'vehicle.placeholders.search_vehicle' | translate | titlecase }}"
+                class="form-control form-control-rounded ">
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="card-body ss-overf-scroll">
+
+        <div class="col-md-12">
+          <div class="form-group ss-src-vehic">
+
+          </div>
+        </div>
+
+        <table class="ss-com-table">
+          <thead>
+            <tr>
+
+              <th>{{ 'common.image' | translate | titlecase }}</th>
+
+              <th (click)="sort('vehicle_id')">
+                {{ 'vehicle.vehicle_id' | translate | titlecase }}
+                <div class="ss-sort-icon">
+                  <span [class.active]=" (col_name == 'vehicle_id') && (sort_order == 'asc')">
+                    <div class="ss-up "></div>
+                  </span>
+                  <span [class.active]=" (col_name == 'vehicle_id') && (sort_order == 'desc')">
+                    <div class="ss-down "></div>
+                  </span>
+                </div>
+              </th>
+
+              <th (click)="sort('vehicle_brand')">
+                {{ 'vehicle.vehicle_brand' | translate | titlecase }}
+                <div class="ss-sort-icon">
+                  <span [class.active]=" (col_name == 'vehicle_brand') && (sort_order == 'asc')">
+                    <div class="ss-up "></div>
+                  </span>
+                  <span [class.active]=" (col_name == 'vehicle_brand') && (sort_order == 'desc')">
+                    <div class="ss-down "></div>
+                  </span>
+                </div>
+              </th>
+
+              <th (click)="sort('model')"> {{ 'vehicle.model' | translate | titlecase }}
+                <div class="ss-sort-icon">
+                  <span [class.active]=" (col_name == 'model') && (sort_order == 'asc')">
+                    <div class="ss-up "></div>
+                  </span>
+                  <span [class.active]=" (col_name == 'model') && (sort_order == 'desc')">
+                    <div class="ss-down "></div>
+                  </span>
+                </div>
+              </th>
+
+              <th (click)="sort('fuel')"> {{ 'vehicle.fuel' | translate | titlecase }}
+                <div class="ss-sort-icon">
+                  <span [class.active]=" (col_name == 'fuel') && (sort_order == 'asc')">
+                    <div class="ss-up "></div>
+                  </span>
+                  <span [class.active]=" (col_name == 'fuel') && (sort_order == 'desc')">
+                    <div class="ss-down "></div>
+                  </span>
+                </div>
+              </th>
+
+              <th (click)="sort('gear_system')">
+                {{ 'vehicle.gear_system' | translate | titlecase }}
+                <div class="ss-sort-icon">
+                  <span [class.active]=" (col_name == 'gear_system') && (sort_order == 'asc')">
+                    <div class="ss-up "></div>
+                  </span>
+                  <span [class.active]=" (col_name == 'gear_system') && (sort_order == 'desc')">
+                    <div class="ss-down "></div>
+                  </span>
+                </div>
+              </th>
+
+              <th (click)="sort('seats')">
+                {{ 'vehicle.seats' | translate | titlecase }}
+                <div class="ss-sort-icon">
+                  <span [class.active]=" (col_name == 'seats') && (sort_order == 'asc')">
+                    <div class="ss-up "></div>
+                  </span>
+                  <span [class.active]=" (col_name == 'seats') && (sort_order == 'desc')">
+                    <div class="ss-down "></div>
+                  </span>
+                </div>
+              </th>
+
+
+              <th class="text-center">
+                {{ 'request.table.action' | translate | titlecase }}
+              </th>
+
+            </tr>
+
+          </thead>
+
+          <tbody>
+            <tr *ngFor="let vehicle of vehicle_list">
+              <td><img src="{{vehicle.image}}" style="width: 20%;"></td>
+              <td>{{vehicle.vehicle_id}}</td>
+              <td>{{vehicle.vehicle_brand}}</td>
+              <td>{{vehicle.model}}</td>
+              <td>{{vehicle.fuel}}</td>
+              <td>{{vehicle.gear_system}}</td>
+              <td>{{vehicle.seats}}</td>
+
+
+              <td class="text-center">
+
+                <button routerLink="vehicle-view" type="button" class="btn btn-outline-primary btn-rounded m-1 toolt">
+                  <i class="i-Eye"></i>
+                  <span class="tooltiptext">{{ 'common.view' | translate }}</span>
+                </button>
+
+                <button routerLink="vehicle-edit" type="button" class="btn btn-outline-success btn-rounded m-1 toolt">
+                  <i class="i-Pen-2"></i>
+                  <span class="tooltiptext">{{ 'common.edit' | translate }}</span>
+                </button>
+
+                <button type="button" (click)="delete_vehicle(modalDelete)"
+                  class="btn btn-outline-danger btn-rounded m-1 toolt"><i class="i-Close"></i>
+                  <span class="tooltiptext">
+                    {{ 'common.delete' | translate }}</span>
+                </button>
+
+              </td>
+            </tr>
+          </tbody>
+
+        </table>
+
+        <!-- =================  -->
+        <ng-template #modalDelete let-modal>
+          <div class="modal-header">
+            <h4 class="modal-title" id="modal-title" prop="club_name">
+              {{ 'vehicle.vehicle_deletion' | translate }}</h4>
+            <button type="button" class="close" aria-label="Close button" aria-describedby="modal-title"
+              (click)="modal.dismiss('Cross click')">
+              <span aria-hidden="true">&times;</span>
+            </button>
+          </div>
+          <div class="modal-body">
+            <p><strong>{{ 'delete_modal.are_you_sure_you_want_to_delete_this_vehicle' | translate }}</strong></p>
+            <p>
+              {{ 'delete_modal.all_information_associated_to_this_vehicle_will_be_permanently_deleted' | translate }}
+              <span class="text-danger">{{ 'delete_modal.this_operation_can_not_be_undone' | translate }}</span>
+            </p>
+
+            <div>
+              <h1 class="text-center timer" [style.display]="timerStatus">
+                <div class="ss-pos-countdwn">
+                  <div class="spinner-bubble spinner-bubble-secondary "></div>
+                  <countdown #countdown [config]="{leftTime: 5,  format: 's', demand: true }"
+                    (event)="handleTimer($event, '1')"></countdown>
+                </div>
+              </h1>
+            </div>
+
+          </div>
+          <div class="modal-footer">
+            <button type="button" class="btn btn-outline-secondary btn-rounded"
+              (click)="cancel_delete_operation()">{{ 'delete_modal.cancel' | translate }}</button>
+            <button type="button" [disabled]="ok_button_disabled" ngbAutofocus class="btn btn-danger btn-rounded"
+              (click)="countdown.resume()">{{ 'delete_modal.ok' | translate }}</button>
+          </div>
+        </ng-template>
+
+        <!-- ========== -->
+
+
+      </div>
+    </div>
+  </div>
+</div>
